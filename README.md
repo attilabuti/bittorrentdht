@@ -1,5 +1,8 @@
 # BitTorrent DHT
 
+[![build status](https://img.shields.io/github/workflow/status/attilabuti/bittorrentdht/CI/main?style=flat-square)](https://github.com/attilabuti/bittorrentdht/actions)
+[![codecov](https://img.shields.io/codecov/c/github/attilabuti/bittorrentdht?style=flat-square)](https://codecov.io/gh/attilabuti/bittorrentdht)
+[![Go Report Card](https://goreportcard.com/badge/github.com/attilabuti/bittorrentdht?style=flat-square)](https://goreportcard.com/report/github.com/attilabuti/bittorrentdht)
 [![license](https://img.shields.io/github/license/attilabuti/bittorrentdht?style=flat-square)](https://raw.githubusercontent.com/attilabuti/bittorrentdht/main/LICENSE)
 
 Go implementation of the [BitTorrent DHT protocol](http://www.bittorrent.org/beps/bep_0005.html).
@@ -40,7 +43,7 @@ This Kademlia DHT k-bucket implementation is meant to be as minimal as possible.
 
 ### arbiter function
 
-This *k-bucket* implementation implements a conflict resolution mechanism using an `arbiter` function. The purpose of the `arbiter` is to choose between two `contact` objects with the same `id` but perhaps different properties and determine which one should be stored.  As the `arbiter` function returns the actual object to be stored, it does not need to make an either/or choice, but instead could perform some sort of operation and return the result as a new object that would then be stored. See [kBucket.update(node, index, contact)](#) for detailed semantics of which `contact` (`incumbent` or `candidate`) is selected.
+This *k-bucket* implementation implements a conflict resolution mechanism using an `arbiter` function. The purpose of the `arbiter` is to choose between two `contact` objects with the same `id` but perhaps different properties and determine which one should be stored.  As the `arbiter` function returns the actual object to be stored, it does not need to make an either/or choice, but instead could perform some sort of operation and return the result as a new object that would then be stored. See [kBucket.update(node, index, contact)](https://github.com/attilabuti/bittorrentdht/blob/bab49c2e7119333be260b77474f0ec235c93eed1/kbucket.go#L414) for detailed semantics of which `contact` (`incumbent` or `candidate`) is selected.
 
 For example, an `arbiter` function implementing a `VectorClock` mechanism would look something like:
 
@@ -101,6 +104,7 @@ As more contacts are added to the "far" k-bucket and it reaches its capacity, it
 - [BitTorrent DHT Extensions for IPv6](https://www.bittorrent.org/beps/bep_0032.html)
 - [DHT Security extension](https://www.bittorrent.org/beps/bep_0042.html)
 - [Storing arbitrary data in the DHT](https://www.bittorrent.org/beps/bep_0044.html)
+- [Distributed Hash Table (DHT)](http://en.wikipedia.org/wiki/Distributed_hash_table)
 - [A formal specification of the Kademlia distributed hash table](http://maude.sip.ucm.es/kademlia/files/pita_kademlia.pdf)
 - [Distributed Hash Tables (part 2)](https://web.archive.org/web/20140217064545/http://offthelip.org/?p=157)
 - [DHT Walkthrough Notes](https://gist.github.com/gubatron/cd9cfa66839e18e49846)
